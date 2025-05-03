@@ -3,30 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actur - Rey Fernando</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Jugadores</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Actur - Rey Fernando</h1>
-  </header>
-  <main>
-    <table id="tabla">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>ELO Fide</th>
-          <th>ELO Fada</th>
-          <th>Categoría</th>
-          <th>Rondas deseadas</th>
-          <th>Rondas disponibles</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-        <!-- contenido generado dinámicamente -->
-      </tbody>
-    </table>
-  </main>
+  <h1>Jugadores</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Elo Fide</th>
+        <th>Elo Fada</th>
+        <th>Categoría</th>
+        <th>Rondas deseadas</th>
+        <th>Rondas disponibles</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+  </table>
+  <form id="formulario-jugador">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre"><br><br>
+    <label for="eloFide">Elo Fide:</label>
+    <input type="number" id="eloFide" name="eloFide"><br><br>
+    <label for="eloFada">Elo Fada:</label>
+    <input type="number" id="eloFada" name="eloFada"><br><br>
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" name="categoria" multiple>
+      <option value="Preferente">Preferente</option>
+      <option value="Primera">Primera</option>
+      <option value="Segunda">Segunda</option>
+    </select><br><br>
+    <label for="rondasDeseadas">Rondas deseadas:</label>
+    <input type="number" id="rondasDeseadas" name="rondasDeseadas"><br><br>
+    <button id="btn-agregar-jugador">Agregar jugador</button>
+  </form>
   <script src="script.js"></script>
 </body>
 </html>

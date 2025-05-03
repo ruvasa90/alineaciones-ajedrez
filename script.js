@@ -29,12 +29,24 @@ function recuperarJugadores() {
 // recuperar los datos de LocalStorage
 let jugadores = recuperarJugadores();
 
+// función para generar las rondas disponibles según la categoría
+function generarRondasDisponibles(categoria) {
+  const categorias = categoria.split(', ');
+  const rondasDisponibles = [];
+  categorias.forEach((cat) => {
+    for (let i = 1; i <= 9; i++) {
+      rondasDisponibles.push(`${cat} - Ronda ${i}`);
+    }
+  });
+  return rondasDisponibles;
+}
+
 // función para crear la tabla
 function crearTabla() {
   const tbody = document.getElementById('tbody');
   tbody.innerHTML = '';
-
   jugadores.forEach((jugador, index) => {
+    const rondasDisponibles = generarRondasDisponibles(jugador.categoria);
     const row = document.createElement('tr');
     row.innerHTML = `
       <td contenteditable="true" data-field="nombre">${jugador.nombre}</td>
@@ -42,26 +54,50 @@ function crearTabla() {
       <td contenteditable="true" data-field="eloFada">${jugador.eloFada}</td>
       <td contenteditable="true" data-field="categoria">${jugador.categoria}</td>
       <td contenteditable="true" data-field="rondasDeseadas">${jugador.rondasDeseadas}</td>
-      <td contenteditable="true" data-field="rondasDisponibles">${jugador.rondasDisponibles.join(', ')}</td>
+      <td contenteditable="true" data-field="rondasDisponibles">${rondasDisponibles.join(', ')}</td>
     `;
     tbody.appendChild(row);
-
     // agregar evento de edición
     const cells = row.querySelectorAll('td');
     cells.forEach((cell) => {
       cell.addEventListener('input', (e) => {
         const field = cell.getAttribute('data-field');
         const value = cell.textContent;
-        jugadores[index][field] = value;
-        // actualizar otros campos dinámicamente
-        if (field === 'eloFide' || field === 'eloFada') {
-          const eloDifference = jugadores[index].eloFide - jugadores[index].eloFada;
-          console.log(`Diferencia de ELO: ${eloDifference}`);
+        if (field === 'categoria') {
+          const nuevasRondasDisponibles = generarRondasDisponibles(value);
+          jugador.rondasDisponibles = nuevasRondasDisponibles;
+          cell.nextElementSibling.textContent = nuevasRondasDisponibles.join(', ');
+        } else {
+          jugador[field] = value;
         }
+        guardarJugadores();
       });
     });
   });
 }
 
-// crear la tabla
+// agregar evento al botón de agregar jugador
+document.getElementById('btn-agregar-jugador').addEventListener('click', (e) => {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const eloFide = parseInt(document.getElementById('eloFide').value);
+  const eloFada = parseInt(document.getElementById('eloFada').value);
+  const categoria = Array.from(document.getElementById('categoria').selectedOptions).map(option => option.value).join(', ');
+  const rondasDeseadas = document.getElementById('rondasDeseadas').value;
+  const rondasDisponibles = generarRondasDisponibles(categoria);
+  const nuevoJugador = {
+    nombre,
+    eloFide,
+    eloFada,
+    categoria,
+    rondasDeseadas,
+    rondasDisponibles
+  };
+  jugadores.push(nuevoJugador);
+  guardarJugadores();
+  crearTabla();
+  document.getElementById('formulario-jugador').reset();
+});
+
+// llamar a la función para crear la tabla
 crearTabla();
