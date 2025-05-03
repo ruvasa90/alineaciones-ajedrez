@@ -1,5 +1,12 @@
-// datos de los jugadores
-const jugadores = [
+// función para guardar los datos en LocalStorage
+function guardarJugadores() {
+  localStorage.setItem('jugadores', JSON.stringify(jugadores));
+}
+
+// función para recuperar los datos de LocalStorage
+function recuperarJugadores() {
+  const datos = localStorage.getItem('jugadores');
+  return datos ? JSON.parse(datos) : [
   { nombre: 'David Lopez', eloFide: 2206, eloFada: 2203, categoria: 'Preferente', rondasDeseadas: '9', rondasDisponibles: [] },
   { nombre: 'Antonio Abos', eloFide: 2024, eloFada: 2017, categoria: 'Preferente', rondasDeseadas: '4', rondasDisponibles: [] },
   { nombre: 'José Joaquin Perez', eloFide: 1909, eloFada: 1911, categoria: 'Preferente', rondasDeseadas: '7', rondasDisponibles: [] },
@@ -18,6 +25,9 @@ const jugadores = [
   { nombre: 'Jose Antonio Alvira', eloFide: 1504, eloFada: 1543, categoria: 'Primera, Segunda', rondasDeseadas: '5', rondasDisponibles: [] },
   { nombre: 'Francisco Lara', eloFide: 1504, eloFada: 1506, categoria: 'Primera, Segunda', rondasDeseadas: '4', rondasDisponibles: [] },
 ];
+
+// recuperar los datos de LocalStorage
+let jugadores = recuperarJugadores();
 
 // función para crear la tabla
 function crearTabla() {
