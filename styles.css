@@ -1,0 +1,32 @@
+body {
+  background-color: #f5f5dc; /* fondo sepia */
+  font-family: Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+main {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+td {
+  background-color: #fff;
+}
