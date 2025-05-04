@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './index.css';
 
 const initialPlayers = [
   { name: 'David Lopez', fide: 2206, fada: 2203, category: ['Preferente'], availableRounds: [1,2,3,4,5,6,7,8,9] },
