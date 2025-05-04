@@ -1,29 +1,36 @@
-import React from 'react';
+import React from "react";
 
-const RoundsBoard = ({ category, rounds, onDropPlayer }) => {
+export default function RoundsBoard({ categories, onDrop }) {
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-2">{category}</h2>
-      <div className="grid grid-cols-3 gap-4">
-        {rounds.map((round, index) => (
-          <div key={index} className="border rounded-xl p-2 bg-gray-100 shadow">
-            <h3 className="font-semibold mb-1">Ronda {index + 1}</h3>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {categories.map((category) => (
+        <div
+          key={category.name}
+          className="p-4 bg-white rounded-2xl shadow-md"
+        >
+          <h3 className="text-lg font-bold mb-2">{category.name}</h3>
+          {category.rounds.map((round, index) => (
             <div
-              className="min-h-20 bg-white rounded p-1"
-              onDrop={(e) => onDropPlayer(e, category, index)}
+              key={index}
+              className="mb-2 p-2 bg-gray-100 rounded-xl min-h-[80px]"
+              onDrop={(e) => onDrop(e, category.name, index)}
               onDragOver={(e) => e.preventDefault()}
             >
-              {round.map((player, idx) => (
-                <div key={idx} className="p-1 m-1 bg-blue-100 rounded">
-                  {player.name} ({player.role})
-                </div>
-              ))}
+              <p className="text-sm font-semibold mb-1">Ronda {index + 1}</p>
+              <ul className="space-y-1">
+                {round.players.map((player, idx) => (
+                  <li
+                    key={idx}
+                    className="p-1 bg-gray-200 rounded"
+                  >
+                    {player.name} ({player.role})
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
-};
-
-export default RoundsBoard;
+}
