@@ -28,3 +28,5 @@ const PFBoard = ({ rounds, onDropPlayer }) => {
     </div>
   );
 };
+
+export default PFBoard;
