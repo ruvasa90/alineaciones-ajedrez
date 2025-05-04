@@ -95,12 +95,17 @@ function App() {
   return (
     <div className="app">
       <h1>ARF Chess Manager</h1>
-      <PlayerForm addPlayer={addPlayer} />
-      <PlayerTable
-        players={players}
-        updatePlayer={updatePlayer}
-        deletePlayer={deletePlayer}
-      />
+      {/* Temporal: eliminar cuando tengas los componentes reales */}
+      <button onClick={handleAddPlayer}>Añadir Jugador (Temporal)</button>
+      <ul>
+        {players.map(player => (
+          <li key={player.id}>
+            {player.name} ({player.category.join ? player.category.join(', ') : player.category}) - FIDE: {player.fide}, FADA: {player.fada}
+            <button onClick={() => handleDeletePlayer(player.id)}>Eliminar</button>
+          </li>
+        ))}
+      </ul>
+
       <button onClick={() => {
         const teams = generateTeams();
         console.log('Equipos generados:', teams);
