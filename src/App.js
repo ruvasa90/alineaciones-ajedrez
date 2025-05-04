@@ -23,11 +23,11 @@ const initialPlayers = [
 ];
 
 // const categories = ['Preferente', 'Primera', 'Segunda'];
-const roundsPerCategory = {
-  Preferente: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  Primera: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  Segunda: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-};
+// const roundsPerCategory = {
+ // Preferente: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+ // Primera: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  //Segunda: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+// };
 
 function App() {
   const [players, setPlayers] = useState(initialPlayers);
