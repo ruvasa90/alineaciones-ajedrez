@@ -44,10 +44,10 @@ function App() {
   };
 
   // const handleEditPlayer = (id, field, value) => {
-    setPlayers(players.map(player =>
-      player.id === id ? { ...player, [field]: field === 'fide' || field === 'fada' ? parseInt(value) : value } : player
-    ));
-  };
+  //  setPlayers(players.map(player =>
+ //   player.id === id ? { ...player, [field]: field === 'fide' || field === 'fada' ? parseInt(value) : value } : player
+  //  ));
+ // };
 
   // const handleRoundsSelection = (category) => roundsPerCategory[category];
 
