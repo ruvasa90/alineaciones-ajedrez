@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
-import logo from './logo.jpg';
+// import logo from './logo.jpg';
 
 const initialPlayers = [
   { id:1, name: 'David Lopez', fide: 2206, fada: 2203, category: 'Preferente', availableRounds: [1,2,3,4,5,6,7,8,9] },
@@ -22,7 +22,7 @@ const initialPlayers = [
   { id:17, name: 'Francisco Lara', fide: 1504, fada: 1506, category: ['Segunda'], availableRounds: [1,2,3,4,5,6,7,8,9] },
 ];
 
-const categories = ['Preferente', 'Primera', 'Segunda'];
+// const categories = ['Preferente', 'Primera', 'Segunda'];
 const roundsPerCategory = {
   Preferente: [1, 2, 3, 4, 5, 6, 7, 8, 9],
   Primera: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -43,13 +43,13 @@ function App() {
     setPlayers(players.filter(player => player.id !== id));
   };
 
-  const handleEditPlayer = (id, field, value) => {
+  // const handleEditPlayer = (id, field, value) => {
     setPlayers(players.map(player =>
       player.id === id ? { ...player, [field]: field === 'fide' || field === 'fada' ? parseInt(value) : value } : player
     ));
   };
 
-  const handleRoundsSelection = (category) => roundsPerCategory[category];
+  // const handleRoundsSelection = (category) => roundsPerCategory[category];
 
   const generateTeams = () => {
     const categorized = {
