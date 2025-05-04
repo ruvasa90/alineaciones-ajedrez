@@ -1,19 +1,23 @@
 import React from 'react';
-import Pool from './components/Pool';
 import RoundsBoard from './components/RoundsBoard';
 
-export default function App() {
-  const [draggedPlayer, setDraggedPlayer] = React.useState(null);
+const App = () => {
+  const pfRounds = Array(9).fill([]);
+  const prRounds = Array(9).fill([]);
+  const seRounds = Array(9).fill([]);
 
-  function handleDragStart(player) {
-    setDraggedPlayer(player);
-  }
+  const handleDrop = (e, category, roundIndex) => {
+    console.log(`Dropped on ${category} round ${roundIndex + 1}`);
+  };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Gestor de Alineaciones de Ajedrez</h1>
-      <Pool onDragStart={handleDragStart} />
-      <RoundsBoard draggedPlayer={draggedPlayer} setDraggedPlayer={setDraggedPlayer} />
+      <RoundsBoard category="PF" rounds={pfRounds} onDropPlayer={handleDrop} />
+      <RoundsBoard category="PR" rounds={prRounds} onDropPlayer={handleDrop} />
+      <RoundsBoard category="SE" rounds={seRounds} onDropPlayer={handleDrop} />
     </div>
   );
-}
+};
+
+export default App;
